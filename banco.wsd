@@ -1,3 +1,7 @@
+@startuml
+
+skinparam RoundCorner 10
+
 title Diagrama de Classes do Banco
 
 class Pessoa {
@@ -18,6 +22,7 @@ class PessoaFisica {
 class PessoaJuridica {
     -cnpj: String
 
+    construtor(pessoa, cnpj)
     valida_cnpj(cnpj)
 }
 
@@ -26,11 +31,14 @@ class Funcionario{
     -matricula: Integer
     -senha: String
 
+    construtor(cargo, matricula, senha)
     acessar_sistema(senha)
 }
 
 class Agencia {
--numero: String
+    -numero: String
+
+    construtor(numero)
 }
 
 class Conta {
@@ -39,6 +47,7 @@ class Conta {
     -cliente: Pessoa
     -saldo: Double
 
+    construtor(numeo, agencia, cliente, saldo)
     sacar(valor)
     depositar(valor)
 }

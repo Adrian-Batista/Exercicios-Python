@@ -1,0 +1,56 @@
+title Diagrama de Classes do Banco
+
+class Pessoa {
+    - nome: String
+    - endereco: String
+
+    construtor(nome, endereco)
+}
+
+class PessoaFisica {
+    -cpf: String
+    -data_nascimento: Date
+
+    construtor(pessoa, cpf, data_nascimento)
+    validar_cpf(cpf)
+}
+
+class PessoaJuridica {
+    -cnpj: String
+
+    valida_cnpj(cnpj)
+}
+
+class Funcionario{
+    -cargo: String
+    -matricula: Integer
+    -senha: String
+
+    acessar_sistema(senha)
+}
+
+class Agencia {
+-numero: String
+}
+
+class Conta {
+    -numero: String
+    -agencia: Agencia
+    -cliente: Pessoa
+    -saldo: Double
+
+    sacar(valor)
+    depositar(valor)
+}
+
+note left of Conta
+    Uma conta contém obrigatoriamente um cliente e uma agência.
+end note
+
+Pessoa <|-- PessoaFisica
+Pessoa <|-- PessoaJuridica
+PessoaFisica <|-- Funcionario
+Pessoa *-- Conta
+Agencia *-- Conta
+
+@enduml
